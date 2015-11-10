@@ -60,23 +60,44 @@
 				</section>
 
 				<section>
-					<h2>Introdução</h2>
+					<h2>Versionamento</h2>
 					<p>
-						Representational State Transfer<b>(Rest)</b> é uma arquitetura web que visa padronizar e estruturar sua API de forma que fique mais simples e intuitiva a utilização da mesma.
+						É importante fazer o versionamento de sua API pois levando em conta que outras apps vão estar se alimentando dela, em momento nenhum você deve adicionar uma funcionalidade de forma que mude o comportamento e "quebre" essas apps.
+					</p>
+					<p>
+						Para isso crie uma '/v2/' de modo que a nova funcionalidade esteja presente e que não interfira nas apps que se alimentam da '/v1/'.
+					</p>
+				</section>
+
+				<section>
+					<h2>Estrutura das rotas</h2>
+					<pre><code class="ruby" data-trim contenteditable>
+					# retorna todos
+get '/api/v1/model_name', to: 'controller_name#index'
+# cria um novo item
+post '/api/v1/model_name', to: 'controller_name#index'
+# retorna item específico
+get '/api/v1/model_name/:id', to: 'controller_name#show'
+# altera item específico
+put '/api/v1/model_name/:id', to: 'controller_name#update'
+# altera item específico
+patch '/api/v1/model_name/:id', to: 'controller_name#update'
+# remove item específico
+remove '/api/v1/model_name/:id', to: 'controller_name#destroy'
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Exemplo</h2>
+					<p>
+						Caso na sua aplicação exista um <b>MODEL</b> e um <b>CONTROLLER</b> <b>USER</b> e você deseje fazer uma simples consulta que retorne uma lista de <b>USERs</b>...
 					</p>
 				</section>
 
 				<section>
 					<h2>Exemplo</h2>
 					<p>
-						Caso na sua aplicação exista um <b>MODEL USER</b> e você deseje fazer uma simples consulta que retorne uma lista de <b>USERs</b>...
-					</p>
-				</section>
-
-				<section>
-					<h2>Exemplo</h2>
-					<p>
-						Ao envés disso..
+						Ao invés disso..
 					</p>
 					<pre class="fragment"><code class="ruby" data-trim contenteditable>
 						get '/get-all-users', to: 'user#index'
@@ -87,6 +108,31 @@
 					<pre class="fragment"><code class="ruby" data-trim contenteditable>
 						get '/api/v1/users, to: 'user#index'
 					</code></pre>
+				</section>
+
+				<section>
+					<h2>HTTP STATUS</h2>
+					<pre><code class="ruby" data-trim contenteditable>
+					# Success
+200	:ok
+201	:created
+
+# Client Error
+400	:bad_request
+401	:unauthorized
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Hora de por a mão na massa</h2>
+				</section>
+				
+				<section style="text-align: left;">
+					<h1>Cabô!!! ;)</h1>
+					<p>
+						- <a href="https://github.com/diegomelo182/rails_api_presentation">Apresentação</a> <br>
+						- <a href="https://github.com/diegomelo182/rails_api_example">Source code</a>
+					</p>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -114,7 +160,7 @@
 					</section>
 				</section> -->
 
-				<section>
+				<!-- <section>
 					<h2>Point of View</h2>
 					<p>
 						Press <strong>ESC</strong> to enter the slide overview.
@@ -189,7 +235,6 @@
 					<h2>Themes</h2>
 					<p>
 						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
@@ -392,15 +437,7 @@ Reveal.addEventListener( 'customevent', function() {
 						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
 						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
 					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+				</section> -->
 
 			</div>
 
